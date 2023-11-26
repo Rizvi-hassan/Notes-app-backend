@@ -5,16 +5,16 @@ const port = 3000
 
 connectToMongo();
 
-app.get('/', (req, res) => {
-  res.send('Hello World! Rizvi')
-})
+app.use(express.json()) // it is middleware used to get json data using POST 
 
-app.get('/home', (req, res) => {
-  res.send('Hello World! Home')
-})
+//Available Routes
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/notes', require('./routes/notes'));
+
+
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port http://localhost:${port}`)
 })
 // connectToMongo();
 
